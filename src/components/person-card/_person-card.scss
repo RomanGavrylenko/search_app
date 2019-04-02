@@ -1,0 +1,39 @@
+.person{
+
+    &__item {
+        @include make-col(4);
+        padding: 10px;
+        margin-top: 30px;
+        //border: 1px solid black;
+        cursor: pointer;
+        transition: 1s;
+        background: white;
+
+        &:hover {
+            transform: scale(1.1);
+            z-index: 100;
+        }
+        
+    }
+
+    &__picture {
+       margin-left: 0;
+       width: 100%;
+       overflow: hidden;
+       text-align: center;
+    
+    }
+
+    &__img {
+        margin: 0 auto;
+        max-width: 100%;
+        //max-width: 400px;
+        max-height: 350px;
+    }
+
+    &__name {
+        text-transform: uppercase;
+        text-align: center;
+        margin: 25px 0;
+    }
+}

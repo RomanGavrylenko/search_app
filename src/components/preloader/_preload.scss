@@ -1,0 +1,23 @@
+.preload {
+
+    &__body {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border-bottom: none;
+        border-left: 1px solid black;
+        border-right: 2px solid black;
+        border-top: 3px solid black;
+        animation: loop 1s infinite;
+
+        margin:  50px auto;
+    }
+
+    @keyframes loop {
+        from  { transform: rotate(0)};
+        25% {transform: rotate(90deg)};
+        50% {transform: rotate(180deg)};
+        75% {transform: rotate(270deg)};
+        to {transform: rotate(360deg) }
+    }
+}

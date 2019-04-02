@@ -1,0 +1,12 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+@import '../node_modules/bootstrap/scss/mixins/breakpoints';
+@import '../node_modules/bootstrap/scss/mixins/grid';
+
+@import './styles/normalize';
+@import './container/search-pearson/search-person';
+@import './components/person-card/person-card';
+@import './components/search-form/search-form';
+@import './components/preloader/preload';

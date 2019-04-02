@@ -1,0 +1,21 @@
+.person {
+    @include make-container();
+    @include make-container-max-widths();
+
+    &__card{
+        @include make-row();
+        list-style: none;
+        
+    }
+
+    &__button {
+        display: block;
+        margin: 30px auto;
+        padding: 15px;
+        background: rgb(162, 162, 238);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        text-transform: uppercase;
+    }
+}
