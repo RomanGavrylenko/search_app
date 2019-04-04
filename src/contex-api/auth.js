@@ -58,7 +58,7 @@ export default class Auth extends Component {
     
     getSingIn = async (id, name) => {
 
-        const {getPearson, loadPersonImage} = this.SW;
+        const {getPearson, loadImage} = this.SW;
 
         try{
             let user = await getPearson(id);
@@ -73,7 +73,7 @@ export default class Auth extends Component {
             } else {
                 this.setState({
                     user,
-                    userImage: loadPersonImage(user.url)
+                    userImage: loadImage(user.url)
                 }, this.setCookieAndData);
             }
         } catch(err){

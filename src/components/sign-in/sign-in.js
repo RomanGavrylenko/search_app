@@ -117,7 +117,7 @@ class SignIn extends React.Component{
                         <p>Приветствую вас, {name} </p>
                     </Modal>
                 }
-                { hasError == 'networkError' &&
+                { hasError && openModal == 'networkError' &&
                     <Modal close={this.closeModal}>
                         <p>Произошла ошибка при загрузке данных. Попробуйте еще раз.</p>
                     </Modal>

@@ -91,7 +91,7 @@ class SearchPerson extends Component {
         return data.map(person=>{
             return <ItemCard 
                     key={person.url} 
-                    loadImage = {this.SW.loadPersonImage}
+                    loadImage = {this.SW.loadImage}
                     data={person}
                     selectPerson={this.selectPerson} />
                     

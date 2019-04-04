@@ -12,7 +12,7 @@ function Header({value}){
                 <li className='header__menu-item'>
                     <Link 
                         className='header__menu-link' 
-                        to='/'
+                        to='/planets/'
                     >
                         Main
                     </Link>

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SearchPerson from './container/search-pearson/search-pearson';
-import SinglePerson from './container/single-person/single-person';
+
+
 import Header from './container/header/header';
 import SignIn from './components/sign-in/sign-in';
 
 import Auth from './contex-api/auth';
+import PeopleCategory from './category-card-list/peopleCardList';
+import SinglePerson from './single-card/people-single-card';
 
-
+import PlanetsCategory from './category-card-list/planet-card-list';
+import SinglePlanet from './single-card/planet-single-list';
 
 
 
@@ -24,9 +27,16 @@ class App extends Component {
         <Auth>
 
             <Header />
+           
 
             <Switch>
-              <Route exact path='/people/' component={SearchPerson} />
+              <Route exact path='/planets/' component={PlanetsCategory} />
+              <Route  path='/planets/:id' 
+                      render={({match})=>{
+                        const {id} = match.params;
+                        return <SinglePlanet id={id}/>
+                      }} />
+              <Route exact path='/people/' component={PeopleCategory} />
               <Route  path='/people/:id' 
                       render={({match})=>{
                         const {id} = match.params;

@@ -27,7 +27,7 @@ export default class SinglePerson extends Component {
         }
         const { name, url, eye_color, gender, height, hair_color } = this.state.person;
 
-        const src = this.SW.loadPersonImage(url);
+        const src = this.SW.loadImage(url);
 
         console.log(this.props)
 

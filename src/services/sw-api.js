@@ -44,6 +44,19 @@ export default class SWAPI {
         }
     }
 
+    getPlanets = async (url)=> {
+        
+        //ссылка для загрузки начальных данных и доп. подгрузки людей
+        let link  = url ? url : `${this._CATEGORY.planets}`;
+
+        try{
+            let data = await makeRequest(link);
+            return data
+        } catch(e){
+            console.log(e.message);
+        }
+    }    
+
     //метод для получения данных о конкретном персонаже
 
     getPearson = async (id)=>{
@@ -57,10 +70,23 @@ export default class SWAPI {
         }
     }
 
+    getPlanet = async (id)=>{
+        const link = `${this._CATEGORY.planets}${id}/`
+
+        try{
+            let data = await makeRequest(link);
+            return data
+        } catch(e){
+            console.log(e);
+        }
+    }
+
     //метод для получения ссылки на картинку для персонажа
-    loadPersonImage = (url) => {
+    loadImage = (url) => {
         let id = this.getId(url);
-        return `${this._IMAGE_CATEGORY.people}${id}.jpg`
+        let cat = this.getICategory(url);
+        console.log(cat);
+        return `${this._IMAGE_CATEGORY[cat]}${id}.jpg`
     }
 
     getId(url){
@@ -68,4 +94,11 @@ export default class SWAPI {
         let id = position[1];
         return id;
     }
+
+    getICategory(url){
+        let position = url.match(/\/(\D+?)\//gm); 
+        return position[1].slice(1,-1)
+    }
+
+   
 }
