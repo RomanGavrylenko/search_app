@@ -34,14 +34,14 @@ export default class SinglePerson extends Component {
         return(
             <div className='single-person__wrapper'>
                 <div className='single-person'>
-                    <figure>
+                    <figure className='single-person__picture'>
                         <img src = {src} alt='icon' className='single-person__img'/>
                     </figure>
                     <div className='single-person__info'>
-                        <h3 className='single-person__name'>{name}</h3>
+                        <h3 className='single-person__name'>Name: {name}</h3>
                         <p className='single-person__text'>Gender: {gender}</p>
-                        <p className='single-person__text'>Height:{height} sm</p>
-                        <p className='single-person__text'>Hair_color: {hair_color}</p>
+                        <p className='single-person__text'>Height: {height} sm</p>
+                        <p className='single-person__text'>Hair color: {hair_color}</p>
                         <p className='single-person__text'>Eye Color: {eye_color}</p>
                     </div>
                 </div>

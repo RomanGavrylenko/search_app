@@ -1,0 +1,67 @@
+.sign-in {
+    @include make-container();
+    @include make-container-max-widths();
+
+    &__title {
+        font-size: 30px;
+        color: white;
+        margin-bottom: 60px;
+        letter-spacing: 2px;
+    }
+
+    &__form {
+        text-align: center;
+        background: rgb(148, 148, 230);
+        padding: 30px 0 60px;
+        margin-top: 100px;
+    }
+
+    &__input {
+        display: block;
+        width: 50%;
+        margin: 0 auto 30px;
+        padding: 15px;
+        border: none;
+        outline: none;
+        color: rgb(94, 94, 105);
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        &::placeholder {
+            color: rgb(181, 181, 194);
+        }
+
+        &_error {
+            border: 1px solid red;
+            color: red;
+
+            &::placeholder {
+                color: red;
+            }
+        }
+    }
+
+    &__label {
+        color: white;
+        font-size: 22px;
+    }
+
+    &__button {
+        display: block;
+        padding: 15px;
+        width: 50%;
+        margin: 0 auto;
+        background: rgb(94, 189, 212);
+        border: none;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+
+
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SearchForm({value, changeSearch}){
     return(
-        <form name='search-form'>
+        <form className='search-form' name='search-form'>
             <input 
                 className='search-form__input' 
                 value={value}

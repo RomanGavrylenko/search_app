@@ -70,8 +70,10 @@ class SearchPerson extends Component {
     //выбрать карточку и перейти на индивидуальную страницу
 
     selectPerson=(url)=>{
+        const { history } = this.props;
         const id = this.SW.getId(url);
-        this.props.history.push(id);
+        console.log(this.props);
+        history.push(id);
     }
 
     //отобразить список карточек (людей)

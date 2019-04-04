@@ -20,12 +20,12 @@ export default class SWAPI {
     _BASE_IMAGE_URL = 'https://starwars-visualguide.com/assets/img/';
 
     _IMAGE_CATEGORY={
-        people: `${this._BASE_IMAGE_URL}characters`,
-        films : `${this._BASE_IMAGE_URL}films`,
-        planets : `${this._BASE_IMAGE_URL}planets`,
-        species : `${this._BASE_IMAGE_URL}species`,
-        starships : `${this._BASE_IMAGE_URL}starships`,
-        vehicles : `${this._BASE_IMAGE_URL}vehicles`
+        people: `${this._BASE_IMAGE_URL}characters/`,
+        films : `${this._BASE_IMAGE_URL}films/`,
+        planets : `${this._BASE_IMAGE_URL}planets/`,
+        species : `${this._BASE_IMAGE_URL}species/`,
+        starships : `${this._BASE_IMAGE_URL}starships/`,
+        vehicles : `${this._BASE_IMAGE_URL}vehicles/`
     }
 
     // get data of people
@@ -60,11 +60,11 @@ export default class SWAPI {
     //метод для получения ссылки на картинку для персонажа
     loadPersonImage = (url) => {
         let id = this.getId(url);
-        return `https://starwars-visualguide.com/assets/img/characters${id}.jpg`
+        return `${this._IMAGE_CATEGORY.people}${id}.jpg`
     }
 
     getId(url){
-        let position = url.match(/(\/\d*)\/$/);
+        let position = url.match(/\/(\d*)\/$/);
         let id = position[1];
         return id;
     }
