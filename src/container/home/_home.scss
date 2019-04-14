@@ -1,0 +1,21 @@
+.home {
+    @include make-container();
+    @include make-container-max-widths();
+
+    &__section {
+        @include make-row();
+
+    }
+
+    //позиционируем блоки на главной странице
+    &__one, 
+    &__two {
+        @include make-col(6);
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 50px;
+        margin: 50px 0;
+    }
+}

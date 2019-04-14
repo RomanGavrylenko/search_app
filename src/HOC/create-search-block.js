@@ -27,7 +27,7 @@ export default function createSearchBlock(Wrapped, API, category ){
 
                 //const getData = this.SW.getData;
 
-                API.getData()
+                /*API.getData()
                     .then(res=>{
                         
                         this.setState({
@@ -37,8 +37,27 @@ export default function createSearchBlock(Wrapped, API, category ){
                         });
 
                     })
-                    .catch(e=> console.log(e));
+                    .catch(e=> console.log(e));*/
+               this.getNeed()
             }
+        }
+
+        //получаем необходимые данные
+
+        getNeed = async () => {
+            let dataList = [];
+            console.log(dataList)
+            for await (let item of API.getData()) {
+                console.log(item)
+                item.id = API.getId(item.url);
+                dataList.push(item)
+            }
+            console.log(dataList)
+            this.setState({
+                dataList,
+                loaded: true
+            })
+            return dataList;
         }
 
         //добавляем данные в sessionStorage, чтобы при возвращении на главную страницу
@@ -73,7 +92,7 @@ export default function createSearchBlock(Wrapped, API, category ){
 
         //отобразить список карточек (людей)
 
-        renderList = ()=> {
+        renderList = (img)=> {
 
             const {search, dataList, filterList } = this.state;
             let data;
@@ -88,7 +107,8 @@ export default function createSearchBlock(Wrapped, API, category ){
                         key={item.url} 
                         loadImage = {API.loadImage}
                         data={item}
-                        selectPerson={this.selectPerson} />
+                        selectPerson={this.selectPerson}
+                        newImage={img} />
             });
         }
 

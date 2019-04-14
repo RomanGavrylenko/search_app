@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import Profile from './components/profile/profile';
 
 import Header from './container/header/header';
 import SignIn from './components/sign-in/sign-in';
@@ -12,6 +13,8 @@ import SinglePerson from './single-card/people-single-card';
 import PlanetsCategory from './category-card-list/planet-card-list';
 import SinglePlanet from './single-card/planet-single-list';
 
+import Home from './container/home/home';
+
 
 
 class App extends Component {
@@ -22,14 +25,22 @@ class App extends Component {
 
 
   render() {
+
+    const menuItem = [
+      {path: '/', name: 'home'},
+      {path: '/planets/', name: 'planets'},
+      {path: '/people/', name: 'people'},
+      {path: '/profile', name: 'profile'},
+      {path: '/signin/', name: 'sign in'}
+    ]
+
     return (
       <Router>
         <Auth>
-
-            <Header />
+            <Header items={menuItem} />
            
-
             <Switch>
+              <Route exact path='/' component={Home}/>
               <Route exact path='/planets/' component={PlanetsCategory} />
               <Route  path='/planets/:id' 
                       render={({match})=>{
@@ -42,9 +53,9 @@ class App extends Component {
                         const {id} = match.params;
                         return <SinglePerson id={id}/>
                       }} />
-              {<Route path='/signin/' component={SignIn} />}
+              <Route path='/profile' component={Profile} />      
+              <Route path='/signin/' component={SignIn} />
             </Switch>
-            
         </Auth>
       </Router>
     );

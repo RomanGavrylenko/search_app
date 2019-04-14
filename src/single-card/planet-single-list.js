@@ -1,6 +1,7 @@
 import React from 'react';
 import createSingleCard from '../HOC/create-single-card';
 import SWAPI from '../services/sw-api';
+import planet from '../images/planet.jpg';
 
 const SW = new SWAPI();
 
@@ -16,7 +17,11 @@ function SinglePlanet({src, single}){
     return  <div className='single-person__wrapper'>
                 <div className='single-person'>
                     <figure className='single-person__picture'>
-                        <img src = {src} alt='icon' className='single-person__img'/>
+                        <img 
+                            src = {src} 
+                            alt='icon' 
+                            className='single-person__img'
+                            onError = {(e)=> { e.target.src=planet}}/>
                     </figure>
                     <div className='single-person__info'>
                         <h3 className='single-person__name'>Name: {name}</h3>

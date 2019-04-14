@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SWAPI from '../services/sw-api';
 import { getCookie, setCookie, deleteCookie } from '../services/cookie';
+import { getValidation } from '../services/validation';
 
 const {Provider: UserProvider, Consumer: UserConsumer} = React.createContext();
 
@@ -17,7 +18,42 @@ export default class Auth extends Component {
     state={
         user: null,
         userImage: null,
-        hasError: false
+        hasError: false, 
+        edit: false
+    }
+
+    //открыть форму для редактирования профиля
+    getEdit = () => {
+        this.setState({
+            edit : true
+        })
+    }
+
+    //сохранить данные для после редактирования
+    editData = (data)=> {
+        let isValid = [];
+
+        console.log(data)
+        for ( let key in data){
+            
+            console.log('--',[key], '==', data[key]);
+            if(data[key] != this.state.user[key]){
+    
+                let valid = getValidation(data[key]);
+
+                if(!valid) {
+                    isValid.push(false);
+                }
+
+            }
+        }
+
+        if(isValid.length>0) return;
+       
+        this.setState({
+            edit : false,
+            user: data
+        }, this.setCookieAndData)
     }
 
     //если имеется кука и данные в local storage, то берем их из них
@@ -85,6 +121,8 @@ export default class Auth extends Component {
         }     
     }
 
+    //выйти(разлогиниться)
+
     getSignOut = ()=> {
         this.setState({
             user: null,
@@ -99,7 +137,10 @@ export default class Auth extends Component {
             getSignOut : this.getSignOut,
             user : this.state.user,
             userImage: this.state.userImage,
-            hasError :  this.state.hasError
+            hasError :  this.state.hasError,
+            getEdit : this.getEdit,
+            saveEdit : this.editData, 
+            edit : this.state.edit
         }
 
         return(

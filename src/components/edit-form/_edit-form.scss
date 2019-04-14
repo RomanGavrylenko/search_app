@@ -1,0 +1,32 @@
+.form {
+
+    width: auto;
+
+    &__label {
+       
+       text-transform: capitalize;
+       margin-bottom: 10px;
+    }
+    
+    &__input {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 1em;
+        padding: 10px;
+        
+    }
+
+    &__button {
+        display: block;
+        padding: 15px;
+        width: 50%;
+        margin: 0 auto;
+        background: rgb(94, 189, 212);
+        border: none;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+}

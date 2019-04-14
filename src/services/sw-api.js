@@ -1,6 +1,9 @@
 import {makeRequest} from './make-request';
 
 export default class SWAPI {
+    construcntor(){
+        this.getAllPeople = this.getAllPeople.bind(this);
+    }
 
     //const for get data about person, planets and other 
 
@@ -30,6 +33,22 @@ export default class SWAPI {
 
     // get data of people
    
+    async *getAllPeople(type) {
+        let link = type == 'people' ? this._CATEGORY.people : this._CATEGORY.planets
+        //let link = this._CATEGORY.people;//'https://swapi.co/api/people/'
+
+        while(link){
+            let data = await makeRequest(link);
+            console.log('-data', data)
+
+            link = data.next;
+
+            for(let item of data.results) { // (4) yield commits one by one, until the page ends
+                console.log(item)
+                yield item;
+            }
+        }
+    }
     
     getPeople = async (url)=> {
         
@@ -85,7 +104,7 @@ export default class SWAPI {
     loadImage = (url) => {
         let id = this.getId(url);
         let cat = this.getICategory(url);
-        console.log(cat);
+        
         return `${this._IMAGE_CATEGORY[cat]}${id}.jpg`
     }
 

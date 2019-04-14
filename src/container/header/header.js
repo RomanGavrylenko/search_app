@@ -4,35 +4,26 @@ import UserProfileWidget from '../../components/user-profile-widget/user-profile
 import withContext from '../../HOC/with-contex';
 import { UserConsumer } from '../../contex-api/auth';
 
-function Header({value}){
+function Header({value, items}){
+
+    //create menu section
+    const menu = items.map(item=>{
+        return (
+            <li className='header__menu-item'>
+                <Link 
+                    className='header__menu-link' 
+                    to={item.path}
+                >
+                    {item.name}
+                </Link>
+            </li>
+        );
+    })
 
     return(
         <header className='header'>
             <ul className='header__menu'>
-                <li className='header__menu-item'>
-                    <Link 
-                        className='header__menu-link' 
-                        to='/planets/'
-                    >
-                        Main
-                    </Link>
-                </li>
-                <li className='header__menu-item'>
-                    <Link 
-                        className='header__menu-link' 
-                        to='/people/'
-                    >
-                        People
-                    </Link>
-                </li>
-                <li className='header__menu-item'>
-                    <Link 
-                        className='header__menu-link' 
-                        to='/signin/'
-                    >
-                        Sign in
-                    </Link>
-                </li>
+               {menu}
             </ul>
             <div className='header__profile'>
                 <UserProfileWidget 
